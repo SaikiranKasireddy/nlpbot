@@ -6,3 +6,6 @@ from django.urls import path
 
 def homepage(request):
     return render(request, 'website/index.html')
+
+def chatbot(request):
+    return render(request, 'website/chatbot.html')
