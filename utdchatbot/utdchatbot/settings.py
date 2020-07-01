@@ -25,6 +25,7 @@ SECRET_KEY = 'i^b0b+r9e7kfwtg0tehy0ty_)o*aoh!((0ksq#(yp$#-mjy8bs'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+#add host name once website is done 
 ALLOWED_HOSTS = []
 
 
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'website'
 ]
 
 MIDDLEWARE = [
@@ -54,7 +56,9 @@ ROOT_URLCONF = 'utdchatbot.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            "website/templates"
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -105,7 +109,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Chicago'
 
 USE_I18N = True
 
@@ -118,3 +122,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
