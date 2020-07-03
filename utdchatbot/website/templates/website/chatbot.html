@@ -9,7 +9,7 @@
   
     <head>
         <nav class="navbar navbar-expand-sm">
-            <a href="/"> back </a>
+            <a href="/" style = "color: #000000; font-size: 20px"> back </a>
         </nav>
     </head>
 
@@ -31,15 +31,27 @@
         </div>
 
     
-    
-
-
-
     <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="{% static 'js/jquery-3.5.1.min.js' %}"></script>
     <script src="{% static 'js/bootstrap.js' %}"></script>
+    <script src="{% static 'js/js.cookie.js' %}"></script>
     <script>
+
+      var chatterbotUrl = '{% url "chatbot" %}';
+      var csrftoken = Cookies.get('csrftoken');
+
+      function csrfSafeMethod(method) {
+        // these HTTP methods do not require CSRF protection
+        return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
+      }
+
+      $.ajaxSetup({
+        beforeSend: function(xhr, settings) {
+          if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
+            xhr.setRequestHeader("X-CSRFToken", csrftoken);
+          }
+        }
+      });
 
       var $chatlog = $('.js-chat-log');
       var $input = $('.js-text');
@@ -57,14 +69,31 @@
           'text': $input.val()
         }
 
+        // Display the user's input on the web page
         createRow(inputData.text);
-        
-        // Clear the input field
-        $input.val('');
 
-        $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        var $submit = $.ajax({
+          type: 'POST',
+          url: '',
+          data: JSON.stringify(inputData),
+          contentType: 'application/json'
+        });
+
+        $submit.done(function(statement) {
+            createRow(statement.text);
+
+            // Clear the input field
+            $input.val('');
+
+            // Scroll to the bottom of the chat interface
+            $chatlog[0].scrollTop = $chatlog[0].scrollHeight;
+        });
+
+        $submit.fail(function() {
+          // TODO: Handle errors
+        });
       }
-
+  
       $sayButton.click(function() {
         submitInput();
       });
