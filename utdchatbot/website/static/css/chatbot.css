@@ -2,6 +2,8 @@
 
 *{
     font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 *:focus {
@@ -13,22 +15,22 @@
     padding: 30px; 
     background-color: #A1D9DD;
 }
-
-.navbar .navbar-brand
+.navbar .navbar-nav
 {
-    color: black; 
+    position: absolute;
+    left: 50vh;
+    transform: translatex(-50%);
 }
 
-.background
-{
+.container-fluid {
+    position: relative;
     height: 100vh;
-    min-height: 500px;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
-#enter {
-    position:absolute;
-    bottom:0;
+#input
+{
+    position: absolute;
+    bottom: 180px; 
 }
+
+
