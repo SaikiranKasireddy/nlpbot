@@ -33,4 +33,28 @@
     bottom: 180px; 
 }
 
+.list-group-item:nth-child(even) {
+
+    padding-right: 30px;
+    background-color: #82ddf0;
+    max-width: 50%;
+    min-height: 50px;
+    left: 50%;
+    text-align: right;
+    border-radius: 25px;
+}
+
+.list-group-item:nth-child(odd) {
+
+    background-color: #e2adf2;
+    max-width: 50%;
+    min-height: 50px;
+    border-radius: 25px;
+}
+
+.chat-log {
+    max-height:500px;
+    overflow-y:scroll;
+}
+
 
