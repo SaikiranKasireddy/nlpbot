@@ -15,7 +15,7 @@ chat = ChatBot('Ron Obvious')
 trainer = ChatterBotCorpusTrainer(chat)
 
 # Train based on the english corpus
-trainer.train("chatterbot.corpus.english.greetings")
+trainer.train("chatterbot.corpus.english")
 
 
 # Create your views here.

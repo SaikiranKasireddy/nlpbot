@@ -39,7 +39,8 @@
     padding-right: 30px;
     background-color: #82ddf0;
     max-width: 50%;
-    min-height: 50px;
+    height:auto;
+    overflow: hidden;
     left: 50%;
     text-align: right;
     border-radius: 25px;
@@ -49,7 +50,8 @@
 
     background-color: #e2adf2;
     max-width: 50%;
-    min-height: 50px;
+    height:auto;
+    overflow: hidden;
     border-radius: 25px;
 }
 
