@@ -4,15 +4,20 @@ from django.http import HttpResponse
 import json
 from chatterbot import ChatBot
 from chatterbot.trainers import ChatterBotCorpusTrainer
+from .forms import NameForm
+from django.views.decorators.csrf import csrf_protect, csrf_exempt
+
+from django.http import HttpResponseRedirect
 
 
 # from chatterbot.trainers import ChatterBotCorpusTrainer
-chatbot = ChatBot('Utd Bot')
+chat = ChatBot('Ron Obvious')
 
-chatbot = ChatterBotCorpusTrainer(chatbot)
+trainer = ChatterBotCorpusTrainer(chat)
 
 # Train based on the english corpus
-#chatbot.train("chatterbot.corpus.english")
+#trainer.train("chatterbot.corpus.english.greetings")
+
 
 # Create your views here.
 
@@ -20,24 +25,11 @@ def homepage(request):
     return render(request, 'website/index.html')
 
 def chatbot(request):
-    return render(request, 'website/chatbot.html')
+	return render(request, 'website/chatbot.html')
 
-def get_response(request):
-	response = {'status': None}
-
-	if request.method == 'POST':
-		data = json.loads(request.body)
-		message = data['message']
-
-		chat_response = chatbot.get_response(message).text
-		response['message'] = {'text': chat_response, 'user': False, 'chat_bot': True}
-		response['status'] = 'ok'
-
-	else:
-		response['error'] = 'no post data found'
-
-	return HttpResponse(
-		json.dumps(response),
-			content_type="application/json"
-		)
-
+@csrf_exempt
+def get(request):
+    message = request.GET['msg[text]']
+    chat_response = chat.get_response(message)
+    print(chat_response)
+    return HttpResponse(chat_response)
