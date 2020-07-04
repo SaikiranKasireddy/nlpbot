@@ -21,7 +21,7 @@
                     <ul class="list-group chat-log js-chat-log">
                     </ul>
                         {% csrf_token %}
-                          <div class = "col-md-8 offset-md-2">
+                          <div class = "col-md-10 offset-md-2">
                             <div class="input-group mb-3">
                               <input id="message" type="text" class="form-control" placeholder = "Type message here" name="message" value="{{ message }}">
                               <div class="input-group-append">
@@ -76,9 +76,8 @@
         createRow(inputData.text);
 
         $.get("get", {msg: inputData}).done(function(data) {
-            createRow(data.text);
+            createRow(data);
 
-            
             // Clear the input field
             $input.val('');
 
