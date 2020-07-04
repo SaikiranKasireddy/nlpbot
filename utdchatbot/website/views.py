@@ -30,5 +30,4 @@ def chatbot(request):
 def get(request):
     message = request.GET['msg[text]']
     chat_response = chat.get_response(message)
-    print(chat_response)
     return HttpResponse(chat_response)
