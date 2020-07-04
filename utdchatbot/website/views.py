@@ -12,7 +12,6 @@ from django.http import HttpResponseRedirect
 
 # from chatterbot.trainers import ChatterBotCorpusTrainer
 chat = ChatBot('Ron Obvious')
-
 trainer = ChatterBotCorpusTrainer(chat)
 
 # Train based on the english corpus

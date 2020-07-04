@@ -30,7 +30,8 @@
 #input
 {
     position: absolute;
-    bottom: 180px; 
+    bottom: 180px;
+    
 }
 
 .list-group-item:nth-child(even) {

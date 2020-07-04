@@ -20,8 +20,9 @@
                 <div class = "col-md-8 offset-md-2" id = "input">
                     <ul class="list-group chat-log js-chat-log">
                     </ul>
+                    <br>
                         {% csrf_token %}
-                          <div class = "col-md-10 offset-md-2">
+                          <div>
                             <div class="input-group mb-3">
                               <input id="message" type="text" class="form-control" placeholder = "Type message here" name="message" value="{{ message }}">
                               <div class="input-group-append">
